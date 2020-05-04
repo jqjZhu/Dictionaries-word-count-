@@ -1,20 +1,17 @@
 def count_word(filename):
-    data = open(filename)
+    input_file = open(filename)
 
-    count_word = {}
+    word_counts = {}
 
-    for i in data:
-        if i not in count_word:
-            count_word[i] = count_word.get(i) + 1
-        else:
-            count_word[i] = 1
+    for line in input_file:
+        line = line.rstrip()
+        words = line.split()
 
-    return count_word
+        for word in words:
+            word_counts[word] = word_counts.get(word, 0) + 1
 
-
-
-count_word('twain.txt')
+    for word, count in word_counts.items():
+        print(word, count)
 
 
-    # for word, count in data.items():
-    #     print("key = {}, value = {}".format(word, count))
+
